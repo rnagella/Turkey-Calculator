@@ -29,6 +29,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // assign delegate
         self.userTextField.delegate = self
+        
+        // set tetxfiled
+        userTextField.text = "2"
+        
+        // calculate for 2 - default values
+        // turkey size in Lbs - 1.5 times of person.
+        let turkeySize = calculateTurkeySize(2.0) // lbs
+        turkeySizeLabel.text = "\(turkeySize) lbs"
+        
+        // thaw time in days
+        let thawTime =  calculateThawTime(2.0) // days
+        thawTimeLabel.text = "\(thawTime) days"
+        
+        // cooking time in hours and minutes
+        let cookTime =  convertHoursToStrings(convertMinutesToHours(calculateCookTime(2.0)))  // Hours
+        cookTimeLabel.text = "\(cookTime)"
+        
     }
 
     override func didReceiveMemoryWarning() {
