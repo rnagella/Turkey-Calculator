@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         userTextField.resignFirstResponder()
+        calculateData()
         return true
     }
     
@@ -83,14 +84,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Actions
-
-    @IBAction func calculateResults(sender: AnyObject) {
-        
-        // close the keypad if opened
-        userTextField.resignFirstResponder()
-        
-        println("Calculate results")
-        
+    
+    func calculateData() {
         let numberOfPersons: Int? = userTextField.text.toInt()
         
         
@@ -107,6 +102,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let cookTime =  convertHoursToStrings(convertMinutesToHours(calculateCookTime(Double(numberOfPersons!))))  // Hours
             cookTimeLabel.text = "\(cookTime)"
         }
+    }
+
+    @IBAction func calculateResults(sender: AnyObject) {
+        
+        // close the keypad if opened
+        userTextField.resignFirstResponder()
+        
+        println("Calculate results")
+        
+        calculateData()
     }
 
 }
