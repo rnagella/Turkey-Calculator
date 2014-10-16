@@ -98,6 +98,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Actions
     
     func calculateData() {
+        
         let numberOfPersons: Int? = userTextField.text.toInt()
         
         
@@ -121,10 +122,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // close the keypad if opened
         userTextField.resignFirstResponder()
         
-        println("Calculate results")
-        
         calculateData()
     }
 
+    @IBAction func sliderButtonClicked(sender: UISlider) {
+        let slider = Int(floor(sender.value))
+        userTextField.text = "\(slider)"
+        calculateData()
+    }
 }
 
