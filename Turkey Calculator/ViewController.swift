@@ -46,6 +46,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let cookTime =  convertHoursToStrings(convertMinutesToHours(calculateCookTime(2.0)))  // Hours
         cookTimeLabel.text = "\(cookTime)"
         
+        // register for key strokes
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "textFieldTextChanged:", name: UITextFieldTextDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +61,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         calculateData()
         return true
     }
+    
+    // listen for text change
+    func textFieldTextChanged(sender: AnyObject) {
+        println(userTextField.text)
+        if userTextField.text.utf16Count > 0 {
+            calculateData()
+        }
+    }
+    
     
     // user defined functions
     
